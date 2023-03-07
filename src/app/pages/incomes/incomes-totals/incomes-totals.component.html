@@ -1,0 +1,41 @@
+<div class="row">
+  <div class="col-xxxl-4 col-md-4">
+    <nb-card class="bg-success" [nbSpinner]="loading" nbSpinnerSize="large" nbSpinnerStatus="info">
+      <div class="icon-container">
+        <div class="icon">
+          <fa-icon [icon]="'clock'" [size]="'xs'"></fa-icon>
+        </div>
+      </div>
+      <div class="details">
+        <div class="title h6 text-white">{{totalPendiente | currency:'MXN'}}</div>
+        <div class="status paragraph-2 text-white">Ingresos pendientes</div>
+      </div>
+    </nb-card>
+  </div>
+  <div class="col-xxxl-4 col-md-4">
+    <nb-card class="bg-success" [nbSpinner]="loading" nbSpinnerSize="large" nbSpinnerStatus="info">
+      <div class="icon-container">
+        <div class="icon">
+          <fa-icon [icon]="'check'" [size]="'xs'"></fa-icon>
+        </div>
+      </div>
+      <div class="details">
+        <div class="title h6 text-white">{{totalRecibido| currency:'MXN'}}</div>
+        <div class="status paragraph-2 text-white">Ingresos recibidos</div>
+      </div>
+    </nb-card>
+  </div>
+  <div class="col-xxxl-4 col-md-4">
+    <nb-card class="" [nbSpinner]="loading" nbSpinnerSize="large" nbSpinnerStatus="info">
+      <div class="icon-container bg-success">
+        <div class="icon">
+          <fa-icon [icon]="'file-invoice-dollar'" [size]="'xs'"></fa-icon>
+        </div>
+      </div>
+      <div class="details">
+        <div class="title h6">{{total | currency:'MXN'}}</div>
+        <div class="status paragraph-2">Ingreso total</div>
+      </div>
+    </nb-card>
+  </div>
+</div>

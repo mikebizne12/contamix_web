@@ -1,0 +1,67 @@
+<div class="row" [nbSpinner]="loading" nbSpinnerSize="large" nbSpinnerStatus="info">
+  <div class="text-center col-12 mb-3">
+    <button nbButton outline status="info" [size]="'small'">
+      <nb-icon icon="arrow-ios-back" (click)="preMonth()"></nb-icon>
+    </button>
+    <input nbInput
+           placeholder="Fecha"
+           mbsc-date
+           [(ngModel)]="dateNow"
+           (onSet)="setMonth($event)"
+           [mbsc-options]="month_onlySettings">
+    <button nbButton outline status="info" [size]="'small'">
+      <nb-icon icon="arrow-ios-forward" (click)="nextMonth()"></nb-icon>
+    </button>
+  </div>
+  <div class="col-xxxl-4 col-xxl-4 col-md-4 addBill" (click)="openCrud(null)">
+    <nb-card size="tiny" class="solar-card">
+      <nb-card-body class="d-flex justify-content-center align-items-center">
+        <div class="text-center">
+          <fa-icon [icon]="'plus'" [size]="'2x'"></fa-icon>
+          <div class="h5 value text-center">Agregar cuenta</div>
+        </div>
+      </nb-card-body>
+    </nb-card>
+  </div>
+  <div class="col-xxxl-4 col-xxl-4 col-md-4" *ngFor="let item of data">
+    <nb-card size="tiny" accent="info" class="solar-card">
+      <nb-card-header class="py-2">
+        <fa-icon [icon]="item.icon" [size]="'lg'"></fa-icon>
+        <span class="ml-2">{{item.name}}</span>
+      </nb-card-header>
+      <nb-card-body>
+        <div class="info">
+          <div class="h5 value text-center">{{item.total | currency:'MXN'}}</div>
+          <div class="details subtitle-1 d-flex text-center">
+            <div class="col-6">
+              <nb-icon icon="arrow-circle-up" status="success" size="medium">
+              </nb-icon>
+              {{item.total_month_income | currency:'MXN'}}
+            </div>
+            <div class="col-6">
+              <nb-icon icon="arrow-circle-down" status="danger">
+              </nb-icon>
+              {{item.total_month_expense | currency:'MXN'}}
+            </div>
+          </div>
+        </div>
+      </nb-card-body>
+      <nb-card-footer class="p-2">
+        <nb-actions size="small" [fullWidth]="true">
+          <nb-action class="px-1" (click)="deleteE(item.id)">
+            <nb-icon icon="trash-2" pack="eva" status="" class="text-basic"></nb-icon>
+          </nb-action>
+          <nb-action class="px-1">
+            <nb-icon icon="swap" pack="eva" status="" class="text-basic"></nb-icon>
+          </nb-action>
+          <nb-action class="px-1">
+            <nb-icon icon="undo-outline" pack="eva" status="" class="text-basic"></nb-icon>
+          </nb-action>
+          <nb-action class="px-1" (click)="openCrud(item)">
+            <nb-icon icon="edit-outline" pack="eva" status="" class="text-basic"></nb-icon>
+          </nb-action>
+        </nb-actions>
+      </nb-card-footer>
+    </nb-card>
+  </div>
+</div>

@@ -1,0 +1,140 @@
+<nb-card [formGroup]="form" [nbSpinner]="loading" nbSpinnerSize="large" nbSpinnerStatus="info">
+  <nb-card-header class="py-2">
+    <div class="row align-items-center">
+      <div class="col-8">
+        {{titulo}}
+      </div>
+    </div>
+  </nb-card-header>
+  <nb-card-body>
+    <div class="row">
+      <div class="col-sm-6">
+        <div class="form-group">
+          <label for="inputFirstName" class="label-default">Fecha de inicio</label><br>
+          <input nbInput
+                 formControlName="date_aux"
+                 placeholder="Fecha"
+                 [nbDatepicker]="formpicker">
+          <nb-datepicker #formpicker [format]="'MM/DD/YYYY'"></nb-datepicker>
+        </div>
+      </div>
+
+      <div class="col-sm-6">
+        <div class="form-group">
+          <label for="inputFirstName" class="label-default">Monto</label>
+          <input type="number" nbInput formControlName="amount" fullWidth id="inputFirstName" placeholder="0.00">
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-6">
+        <div class="form-group">
+          <label class="label-default">Tipo de recurrencia</label>
+          <nb-select placeholder="Elije una opción" formControlName="recurrence_id"
+                     fullWidth (selectedChange)="setDia($event)">
+            <nb-option [value]="tipoR.id" *ngFor="let tipoR of tiposRecurrencias">
+              {{tipoR.name}}
+            </nb-option>
+          </nb-select>
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <div class="form-group" *ngIf="mostrarDias">
+          <label class="label-default">Dia</label>
+          <nb-select placeholder="Elije una opción" formControlName="day"
+                     fullWidth>
+            <nb-option [value]="day.id" *ngFor="let day of diasSemanas.days">
+              {{day.value}}
+            </nb-option>
+          </nb-select>
+        </div>
+        <div class="form-group" *ngIf="mostrarSemanas">
+          <label class="label-default">Dia de la semana</label>
+          <nb-select placeholder="Elije una opción" formControlName="day"
+                     fullWidth>
+            <nb-option [value]="day.id" *ngFor="let day of diasSemanas.days_week">
+              {{day.value}}
+            </nb-option>
+          </nb-select>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-6">
+        <div class="form-group">
+          <label class="label-default" *ngIf="tipo">Total de cobros a realizar</label>
+          <label class="label-default" *ngIf="!tipo">Total de pagos a realizar</label>
+          <input type="number" nbInput formControlName="total" fullWidth placeholder="0">
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <div class="form-group">
+          <label class="label-default" *ngIf="tipo">Cobros realizados</label>
+          <label class="label-default" *ngIf="!tipo">Pagos realizados</label>
+          <input type="number" nbInput formControlName="count" fullWidth placeholder="0">
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="form-group">
+          <label class="label-default">Descripción</label>
+          <textarea rows="5" nbInput fullWidth shape="round" placeholder="Comentarios..."
+                    formControlName="description"></textarea>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-6">
+        <div class="form-group">
+          <label class="label-default">Categoría</label>
+          <nb-select placeholder="Elije una opción" formControlName="income_type_id"
+                     *ngIf="tipo"
+                     fullWidth (selectedChange)="getCategoriaSeleccionada()">
+            <nb-select-label *ngIf="categoriaSeleccionada">
+              <fa-icon [icon]="categoriaSeleccionada.icon" class="mr-1"></fa-icon>
+              {{categoriaSeleccionada.name}}
+            </nb-select-label>
+            <nb-option [value]="tipo.id" *ngFor="let tipo of tipos">
+              <fa-icon [icon]="tipo.icon" class="mr-1"></fa-icon>
+              {{tipo.name}}
+            </nb-option>
+          </nb-select>
+          <nb-select placeholder="Elije una opción" formControlName="expense_type_id"
+                     *ngIf="!tipo"
+                     fullWidth (selectedChange)="getCategoriaSeleccionada()">
+            <nb-select-label *ngIf="categoriaSeleccionada">
+              <fa-icon [icon]="categoriaSeleccionada.icon" class="mr-1"></fa-icon>
+              {{categoriaSeleccionada.name}}
+            </nb-select-label>
+            <nb-option [value]="tipo.id" *ngFor="let tipo of tipos">
+              <fa-icon [icon]="tipo.icon" class="mr-1"></fa-icon>
+              {{tipo.name}}
+            </nb-option>
+          </nb-select>
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <div class="form-group">
+          <label class="label-default">Cuenta</label>
+          <nb-select placeholder="Elije una opción" formControlName="bill_id" fullWidth
+                     (selectedChange)="getCuentaSeleccionada()">
+            <nb-select-label *ngIf="cuentaSeleccionada">
+              <fa-icon [icon]="cuentaSeleccionada.icon" class="mr-1"></fa-icon>
+              {{cuentaSeleccionada.name}}
+            </nb-select-label>
+            <nb-option [value]="cuenta.id" *ngFor="let cuenta of cuentas">
+              <fa-icon [icon]="cuenta.icon" class="mr-1"></fa-icon>
+              {{cuenta.name}}
+            </nb-option>
+          </nb-select>
+        </div>
+      </div>
+    </div>
+
+  </nb-card-body>
+  <nb-card-footer class="text-right">
+    <button class="cancel mr-2" nbButton status="basic" (click)="cancel()">Cancelar</button>
+    <button nbButton [status]="colorBtn" [disabled]="form.invalid" (click)="submit()">Guardar</button>
+  </nb-card-footer>
+</nb-card>

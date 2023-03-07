@@ -1,0 +1,13 @@
+{
+  "PROFILE": "Perfil",
+  "LOGOUT": "Cerrar sesión",
+  "CONFIRM": {
+    "TIT": "¿Estás seguro que quieres cerrar sesión?",
+    "DELETE": "¿Estás seguro que quieres eliminarlo?"
+  },
+  "BTN": {
+    "ACCEPT": "Aceptar",
+    "CANCEL": "Cancelar",
+    "SAVE": "Guardar"
+  }
+}

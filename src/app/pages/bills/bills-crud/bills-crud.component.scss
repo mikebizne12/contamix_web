@@ -1,0 +1,33 @@
+$negro: #1e1e1e;
+$blanco: #fff;
+
+nb-card {
+  max-width: 50%;
+  margin: 0 auto;
+}
+
+.contentIcons {
+  height: 180px;
+  overflow-y: scroll;
+}
+
+.img-thumbnail {
+  background-color: transparent;
+}
+
+.contentIcons fa-icon {
+  cursor: pointer;
+}
+
+.contentIcons fa-icon:hover {
+  background-color: $negro;
+  color: $blanco;
+}
+
+.seleccionado {
+  background-color: $negro;
+  color: $blanco;
+  border-color: $negro;
+}
+
+

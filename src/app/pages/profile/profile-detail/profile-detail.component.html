@@ -1,0 +1,66 @@
+<nb-card [formGroup]="form" [nbSpinner]="loading" nbSpinnerSize="large" nbSpinnerStatus="info">
+  <nb-card-header class="py-2">
+    <div class="row align-items-center">
+      <div class="col-8">
+        Perfil
+      </div>
+
+    </div>
+  </nb-card-header>
+  <nb-card-body>
+    <div class="row">
+      <div class="col-sm-6">
+        <div class="form-group">
+          <label for="inputFirstName" class="label-default">Nombre completo</label>
+          <input type="text" nbInput formControlName="name" fullWidth id="inputFirstName" placeholder="">
+        </div>
+      </div>
+
+      <div class="col-sm-6">
+        <div class="form-group">
+          <label for="inputUserName" class="label-default">Usuario</label>
+          <input type="text" nbInput formControlName="username" fullWidth id="inputUserName" placeholder="">
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-6">
+        <div class="form-group">
+          <label class="label-default">Email</label>
+          <input type="text" nbInput class="text-secondary" formControlName="email" readonly fullWidth placeholder="">
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <div class="form-group">
+          <label class="label-default">Contraseña actual</label>
+          <input type="password" nbInput formControlName="current_password" fullWidth placeholder="">
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <div class="form-group">
+          <label class="label-default">Contraseña nueva</label>
+          <input type="password" nbInput formControlName="new_password" fullWidth placeholder="">
+        </div>
+      </div>
+
+      <!-- <div class="col-sm-6">
+        <div class="form-control-group">
+          <label class="label" for="input-re-password">Repetir contraseña nueva:</label>
+          <input type="password" nbInput formControlName="repet_new_password" fullWidth placeholder=""
+          [status]="form.controls.repet_new_password.invalid  ? 'danger' : 'success'"
+           <ng-container *ngIf="form.controls.repet_new_password.invalid && form.controls.repet_new_password.touched || form.controls.password.value != form.controls.repet_new_password.value">
+            <p class="caption status-danger" *ngIf="form.controls.password.value != form.controls.repet_new_password.value && !form.controls.repet_new_password.errors?.required">
+              Las contraseñas no coinciden
+            </p>
+          </ng-container> 
+        </div>
+      </div> -->
+
+
+    </div>
+  </nb-card-body>
+  <nb-card-footer class="text-right">
+    <!--    <button class="cancel mr-2" nbButton status="basic" (click)="cancel()">Cancelar</button>-->
+    <button nbButton status="primary" [disabled]="form.invalid" (click)="submit()">Guardar</button>
+  </nb-card-footer>
+</nb-card>

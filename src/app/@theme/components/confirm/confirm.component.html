@@ -1,0 +1,13 @@
+<nb-card>
+  <nb-card-body>
+    {{'CONFIRM.TIT'| translate}}
+    <div class="row text-center mt-4">
+      <div class="col-6 text-right">
+        <button nbButton status="basic" (click)="close()">{{'BTN.CANCEL'| translate}}</button>
+      </div>
+      <div class="col-6 text-left">
+        <button nbButton status="primary" (click)="aceptar()">{{'BTN.ACCEPT'| translate}}</button>
+      </div>
+    </div>
+  </nb-card-body>
+</nb-card>

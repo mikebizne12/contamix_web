@@ -1,0 +1,34 @@
+<nb-card [formGroup]="form" [nbSpinner]="loading" nbSpinnerSize="large" nbSpinnerStatus="info">
+  <nb-card-header class="py-2">
+    {{titulo}} cuenta
+  </nb-card-header>
+  <nb-card-body>
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="form-group">
+          <label for="inputFirstName" class="label-default">Nombre</label>
+          <input type="text" nbInput formControlName="name" fullWidth id="inputFirstName">
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12">
+        <div class="form-group">
+          <label class="label-default">Icono</label>
+          <div class="row contentIcons">
+            <div class="col-md-1 py-2  m-auto" *ngFor="let icono of iconos">
+              <fa-icon [icon]="icono.name" [class.seleccionado]="form.get('icon').value==icono.name"
+                       (click)="seleccionarIcono(icono.name)"
+                       class="img-thumbnail" [size]="'lg'"></fa-icon>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nb-card-body>
+  <nb-card-footer class="text-right">
+    <button class="cancel mr-2" nbButton status="basic" (click)="cancel()">Cancelar</button>
+    <button nbButton [status]="'info'" [disabled]="form.invalid" (click)="submit()">Guardar</button>
+  </nb-card-footer>
+</nb-card>
+

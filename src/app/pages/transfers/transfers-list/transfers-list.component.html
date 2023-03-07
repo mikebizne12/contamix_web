@@ -1,0 +1,77 @@
+<ngx-transfers-totals
+  [totalPendiente]="0"
+  [totalRecibido]="0"
+  [total]="total"
+  [loading]="loading">
+</ngx-transfers-totals>
+
+<nb-card [nbSpinner]="loading" nbSpinnerSize="large" nbSpinnerStatus="info">
+  <nb-card-header>
+    <div class="text-center">
+      <button nbButton ghost status="info" [size]="'small'">
+        <nb-icon icon="arrow-ios-back" (click)="preMonth()"></nb-icon>
+      </button>
+      <input nbInput
+             placeholder="Fecha"
+             mbsc-date
+             [(ngModel)]="dateNow"
+             (onSet)="setMonth($event)"
+             [mbsc-options]="month_onlySettings">
+      <button nbButton ghost status="info" [size]="'small'">
+        <nb-icon icon="arrow-ios-forward" (click)="nextMonth()"></nb-icon>
+      </button>
+    </div>
+  </nb-card-header>
+  <nb-card-body>
+    <div class="table-responsive ">
+      <table class="table table-hover">
+        <thead>
+        <tr>
+
+          <th scope="col" class="text-center text-basic" [width]="175" (click)="setOrder('date')"> Fecha
+            <app-icon-order [name]="'date'" [key]="key" [reverse]="reverse"></app-icon-order>
+          </th>
+          <th scope="col" class="text-basic" (click)="setOrder('description')">Descripción
+            <app-icon-order [name]="'description'" [key]="key" [reverse]="reverse"></app-icon-order>
+          </th>
+          <th scope="col" class="text-basic" (click)="setOrder('transfer_expense.bill.name')">Origen
+            <app-icon-order [name]="'type.name'" [key]="key" [reverse]="reverse"></app-icon-order>
+          </th>
+          <th scope="col" class="text-basic" (click)="setOrder('transfer_income.bill.name')">Destino
+            <app-icon-order [name]="'bill.name'" [key]="key" [reverse]="reverse"></app-icon-order>
+          </th>
+          <th scope="col" class="text-basic" (click)="setOrder('amount')">Importe
+            <app-icon-order [name]="'amount'" [key]="key" [reverse]="reverse"></app-icon-order>
+          </th>
+          <th scope="col" class="text-basic text-center">Acciones</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let item of data | orderBy:key:reverse">
+          <td class="text-center text-basic p-0 pt-2">{{getFormatDate(item.date)}}</td>
+          <td class="text-basic p-0 pt-2">{{item.description}}</td>
+          <td class="p-0 pt-2">
+            <fa-icon [icon]="item.transfer_expense.bill.icon" class="img-thumbnail mr-1"></fa-icon>
+            <span class="text-basic">{{item.transfer_expense.bill.name}}</span>
+          </td>
+          <td class="p-0 pt-2">
+            <fa-icon [icon]="item.transfer_income.bill.icon" class="img-thumbnail mr-1"></fa-icon>
+            <span class="text-basic">{{item.transfer_income.bill.name}}</span>
+          </td>
+          <td class="text-right p-0 pt-2"><span class="text-basic">{{item.amount | currency:'MXN'}}</span></td>
+          <td class="text-center py-1">
+            <button (click)="update(item)" nbButton status="basic" class="mr-1" [size]="'tiny'">
+              <nb-icon icon="edit-outline" pack="eva"></nb-icon>
+            </button>
+            <button (click)="deleteE(item.id)" nbButton status="basic" [size]="'tiny'">
+              <nb-icon icon="trash-outline" pack="eva"></nb-icon>
+            </button>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+      <!--<pagination-controls class="my-pagination" (pageChange)="p = $event"></pagination-controls>-->
+    </div>
+
+  </nb-card-body>
+</nb-card>

@@ -1,0 +1,107 @@
+{
+  "HOTS": "Hotels",
+  "CONFIG": "Configuration",
+  "NAVI": "Navegation",
+  "APF": "Billing",
+  "MODCHA": {
+    "TIT1": "NOTICE",
+    "TXT1": "The changes made have not been saved. <br> <b>Do you want to continue without saving?</b>",
+    "BTN1": "SAVE AND CONTINUE",
+    "BTN2": "CONTINUE WITHOUT SAVING",
+    "BTN3": "CANCEL"
+  },
+  "AUTLOG": {
+    "TIT1": "Login to your account",
+    "SUB1": "Enter your credentials below",
+    "INP1": "Username",
+    "INP2": "Password",
+    "BTN1": "Sign in"
+  },
+  "ERRMOD": {
+    "TIT500": "Unexpected error",
+    "TIT422": "Verify the information",
+    "TIT404": "Not found",
+    "TIT403": "Unauthorized access",
+    "TXT500": "Please try again later.",
+    "TXT404": "Resource not found.",
+    "TXT403": "You do not have the permissions to perform this action.",
+    "BTN1": "Close"
+  },
+  "DELMO": {
+    "TIT1": "Are you sure you want to {{action}} {{pronuon}} {{title}}?",
+    "TXT1": "If you perform this action, you will not be able to revert.",
+    "LBL1": "Name",
+    "LBL2": "Value",
+    "BTN1": "Cancel",
+    "BTN2": "Delete"
+  },
+  "NGS": {
+    "TXT0": "All",
+    "TXT1": "Choose option",
+    "TXT2": "Not results",
+    "TXT3": "Loading...",
+    "TXT4": "Search...",
+    "TIT1": "What is this?"
+  },
+  "MODAL": {
+    "BTN": {
+      "SAVE": "Save",
+      "CANCEL": "Cancel",
+      "CLOSE": "Close",
+      "UPDATE": "Update"
+    }
+  },
+  "LST": {
+    "LISTA": "List of",
+    "AL": "to",
+    "DE": "from"
+  },
+  "ALERTS": {
+    "CLOSE": "Close"
+  },
+  "BUTTON": {
+    "ACCEPT": "Accept",
+    "ADD": "Add",
+    "BACK": "Back",
+    "CANCEL": "Cancel",
+    "CLOSE": "Close",
+    "DELETE": "Delete",
+    "RELOAD": "Reload",
+    "SAVE": "Save",
+    "SEARCH": "Search",
+    "LINK": "Link",
+    "UNLINK": "Unlink"
+  },
+  "CONTROLS": {
+    "FILTER": "Filter",
+    "SEARCH": "Search"
+  },
+  "DROPDOWN": {
+    "UPDATE": "Edit",
+    "COPY": "Copy"
+  },
+  "FORM": {
+    "TITLE": "Search engine",
+    "SEARCH": "Search",
+    "CLEAN": "Clean"
+  },
+  "INPUTS": {
+    "IMAGE": "Choose a file"
+  },
+  "TOTAL": {
+    "ITEMS": "records"
+  },
+  "OCUPACION": {
+    "ADULTO": "Adult",
+    "ADULTOS": "Adults",
+    "NINO": "Child",
+    "NINOS": "Children"
+  },
+  "MODO": {
+    "ESTANCIA": "Stay",
+    "PERSONA": "Person",
+    "NOCHE": "Night",
+    "PERSONA_NOCHE": "Night person"
+  },
+  "LOCKED": "Locked"
+}

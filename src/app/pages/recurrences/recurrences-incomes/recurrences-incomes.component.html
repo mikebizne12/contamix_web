@@ -1,0 +1,73 @@
+<ngx-recurrences-incomes-total
+  [totalPendiente]="0"
+  [totalRecibido]="0"
+  [total]="total"
+  [loading]="loading">
+</ngx-recurrences-incomes-total>
+
+<nb-card [nbSpinner]="loading" nbSpinnerSize="large" nbSpinnerStatus="info">
+  <nb-card-header class="pb-0 border-bottom-0">
+    <button (click)="openCrud(null)" nbButton outline status="success" class="mr-1 float-right" [size]="'small'">
+      <nb-icon icon="plus-circle-outline" pack="eva"></nb-icon>
+      Agregar
+    </button>
+  </nb-card-header>
+  <nb-card-body>
+    <div class="table-responsive ">
+      <table class="table table-hover">
+        <thead>
+        <tr>
+          <th scope="col" class="text-center text-basic">
+          </th>
+          <th scope="col" class="text-center text-basic" [width]="175" (click)="setOrder('date')"> Fecha
+            <app-icon-order [name]="'date'" [key]="key" [reverse]="reverse"></app-icon-order>
+          </th>
+          <th scope="col" class="text-basic" (click)="setOrder('description')">Descripción
+            <app-icon-order [name]="'description'" [key]="key" [reverse]="reverse"></app-icon-order>
+          </th>
+          <th scope="col" class="text-basic" (click)="setOrder('type.name')">Categoría
+            <app-icon-order [name]="'type.name'" [key]="key" [reverse]="reverse"></app-icon-order>
+          </th>
+          <th scope="col" class="text-basic" (click)="setOrder('bill.name')">Cuenta
+            <app-icon-order [name]="'bill.name'" [key]="key" [reverse]="reverse"></app-icon-order>
+          </th>
+          <th scope="col" class="text-basic" (click)="setOrder('recurrence.name')">Frecuencia
+            <app-icon-order [name]="'bill.name'" [key]="key" [reverse]="reverse"></app-icon-order>
+          </th>
+          <th scope="col" class="text-basic" (click)="setOrder('amount')">Importe
+            <app-icon-order [name]="'amount'" [key]="key" [reverse]="reverse"></app-icon-order>
+          </th>
+          <th scope="col" class="text-basic text-center">Acciones</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let item of data | orderBy:key:reverse">
+          <td class="text-center text-basic p-0 pt-2"><b>{{item.count}}/{{item.total}}</b></td>
+          <td class="text-center text-basic p-0 pt-2">{{getFormatDate(item.date)}}</td>
+          <td class="text-basic p-0 pt-2">{{item.description}}</td>
+          <td class="p-0 pt-2">
+            <span class="text-basic">{{item.type.name || 'N/A'}}</span>
+          </td>
+          <td class="p-0 pt-2">
+            <span class="text-basic">{{item.bill.name || 'N/A'}}</span>
+          </td>
+          <td class="p-0 pt-2">
+            <span class="text-basic">{{item.recurrence.name || 'N/A'}}</span>
+          </td>
+          <td class="text-right p-0 pt-2"><span class="text-basic">{{item.amount | currency:'MXN'}}</span></td>
+          <td class="text-center py-1">
+            <button (click)="openCrud(item)" nbButton status="basic" class="mr-1" [size]="'tiny'">
+              <nb-icon icon="edit-outline" pack="eva"></nb-icon>
+            </button>
+            <button (click)="deleteE(item.id)" nbButton status="basic" [size]="'tiny'">
+              <nb-icon icon="trash-outline" pack="eva"></nb-icon>
+            </button>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+      <!--<pagination-controls class="my-pagination" (pageChange)="p = $event"></pagination-controls>-->
+    </div>
+
+  </nb-card-body>
+</nb-card>

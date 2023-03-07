@@ -1,0 +1,19 @@
+<div class="row">
+  <div class="col-xxxl-4 col-md-4">
+  </div>
+  <div class="col-xxxl-3 col-md-3">
+  </div>
+  <div class="col-xxxl-5 col-md-5">
+    <nb-card class="" [nbSpinner]="loading" nbSpinnerSize="large" nbSpinnerStatus="info">
+      <div class="icon-container bg-success">
+        <div class="icon">
+          <fa-icon [icon]="'file-invoice-dollar'" [size]="'xs'"></fa-icon>
+        </div>
+      </div>
+      <div class="details">
+        <div class="title h6">{{total | currency:'MXN'}}</div>
+        <div class="status paragraph-2">Total cobros programados</div>
+      </div>
+    </nb-card>
+  </div>
+</div>
